@@ -26,14 +26,27 @@ export default {};
   color: $gray-06;
   padding: 0 rem(170px);
 
+  @media screen and (max-width: 480px) {
+    height: 60px;
+    padding: 0 rem(20px);
+  }
+
   & > .logo-container {
     display: flex;
-    flex: none;
+    justify-content: space-between;
+
+    @media screen and (max-width: 480px) {
+      width: 100%;
+    }
 
     & > .logo {
       font-weight: 700;
       font-size: rem(23px);
       margin-right: 30px;
+
+      @media screen and (max-width: 480px) {
+        margin-right: 0;
+      }
     }
 
     & > .date {
@@ -45,6 +58,10 @@ export default {};
   & > .nav-day {
     margin-left: auto;
     font-size: rem(17px);
+
+    @media screen and (max-width: 480px) {
+      display: none;
+    }
   }
 }
 </style>
