@@ -5,6 +5,15 @@
   padding: 0;
 }
 
+// remConverter
+$html-font-size: 16px;
+@function remConverter($value) {
+  @return $value / ($value * 0 + 1);
+}
+@function rem($pxValue) {
+  @return #{remConverter($pxValue) / remConverter($html-font-size)}rem;
+}
+
 html {
   font-size: 12px;
   box-sizing: border-box;
