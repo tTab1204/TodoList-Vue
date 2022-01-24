@@ -1,11 +1,15 @@
 <template>
   <div class="todo-list">
-    <h1>This is an todoList page</h1>
+    <TodoHeader />
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  components: {
+    TodoHeader,
+  },
+};
 </script>
 
 <style lang="scss" scoped></style>
