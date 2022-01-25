@@ -12,7 +12,7 @@ button {
   border-radius: rem(5px);
   font-weight: 500;
   font-family: "Pretendard";
-  font-size: rem(18px);
+  font-size: rem(16px);
   color: $white;
   padding: rem(12px);
 }

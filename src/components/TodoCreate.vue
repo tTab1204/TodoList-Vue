@@ -10,6 +10,7 @@ import InputBox from "./common/InputBox";
 import Button from "./common/Button";
 import generateUniqueId from "@/utils/generateUniqueId";
 import store from "@/utils/store";
+import { VALID_INPUT_MESSAGE } from "@/constants";
 
 export default {
   components: { InputBox, Button },
@@ -23,7 +24,7 @@ export default {
   methods: {
     addTodo() {
       if (!this.inputValue.trim()) {
-        alert("할 일을 입력하세요!");
+        alert(VALID_INPUT_MESSAGE);
         return;
       }
       const todo = {
@@ -44,8 +45,8 @@ export default {
 .container {
   display: flex;
 
-  & > input {
-    margin-right: rem(9px);
+  & > button {
+    margin-left: 10px;
   }
 }
 </style>

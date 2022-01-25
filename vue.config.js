@@ -4,7 +4,7 @@ module.exports = {
     loaderOptions: {
       sass: {
         // 먼저 가져와야 하는 파일을 명시한 속성
-        prependData: `@import "@/assets/scss/index.scss";`,
+        prependData: `@import "@/styles/scss/index.scss";`,
       },
     },
   },
