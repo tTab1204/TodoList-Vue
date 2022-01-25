@@ -6,7 +6,7 @@
       v-bind:value="value"
       v-on:input="updateInput"
     />
-    <div class="input-option">
+    <div class="input-option" @click.prevent="SHOW_MODAL(true)">
       <IconBase width="18" height="19" iconName="calendar" iconColor="#898989"
         ><CalendarIcon
       /></IconBase>
@@ -14,6 +14,7 @@
 
     <div class="input-option">카테고리</div>
     <div class="input-option">중요도</div>
+    <Modal v-if="showModal" />
   </div>
 </template>
 
@@ -21,11 +22,22 @@
 import IconBase from "@/components/icons/IconBase.vue";
 import CalendarIcon from "@/components/icons/CalendarIcon.vue";
 import DownIcon from "@/components/icons/DownIcon.vue";
+import Modal from "@/components/common/Modal.vue";
+import { mapMutations, mapState } from "vuex";
 
 export default {
-  components: { IconBase, CalendarIcon, DownIcon },
+  components: { IconBase, CalendarIcon, DownIcon, Modal },
   props: ["value"],
+
+  computed: {
+    ...mapState({
+      showModal: "showModal",
+    }),
+  },
+
   methods: {
+    ...mapMutations(["SHOW_MODAL"]),
+
     updateInput(e) {
       this.$emit("input", e.target.value);
     },

@@ -4,8 +4,13 @@ import router from "./router";
 import store from "./store";
 import i18n from "./i18n";
 import "@/styles/scss/index.scss";
+import VCalendar from "v-calendar";
 
 Vue.config.productionTip = false;
+
+Vue.use(VCalendar, {
+  componentPrefix: "vc",
+});
 
 new Vue({
   router,
