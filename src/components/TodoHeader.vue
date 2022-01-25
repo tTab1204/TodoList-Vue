@@ -22,11 +22,12 @@ export default {};
   display: flex;
   align-items: center;
   height: 100px;
+  border-bottom: 1px solid $gray-04;
   line-height: 130%;
   color: $gray-06;
   padding: 0 rem(170px);
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 780px) {
     height: 60px;
     padding: 0 rem(20px);
   }
@@ -35,7 +36,7 @@ export default {};
     display: flex;
     justify-content: space-between;
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 1024px) {
       width: 100%;
     }
 
@@ -59,7 +60,7 @@ export default {};
     margin-left: auto;
     font-size: rem(17px);
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 1024px) {
       display: none;
     }
   }
