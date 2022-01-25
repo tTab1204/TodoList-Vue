@@ -17,7 +17,10 @@ export default {
 
 <style lang="scss" scoped>
 .body-container {
-  border: 1px solid black;
   padding: rem(37px) rem(170px);
+
+  @media screen and (max-width: 780px) {
+    padding: rem(12px) rem(20px);
+  }
 }
 </style>
