@@ -46,18 +46,18 @@ export default {
   data() {
     return {
       date: "",
-      showDate: false,
     };
   },
 
   computed: {
     ...mapState({
       showModal: "showModal",
+      showDate: "showDate",
     }),
   },
 
   methods: {
-    ...mapMutations(["SHOW_MODAL"]),
+    ...mapMutations(["SHOW_MODAL", "SHOW_DATE"]),
 
     updateInput(e) {
       this.$emit("input", e.target.value);
@@ -67,7 +67,7 @@ export default {
       const formattedDate = new Intl.DateTimeFormat("ko-KR").format(curDate);
       this.date = formattedDate;
       this.$emit("date", this.date);
-      this.showDate = true;
+      this.SHOW_DATE(true);
     },
   },
 };

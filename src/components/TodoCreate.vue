@@ -11,6 +11,7 @@ import Button from "./common/Button";
 import generateUniqueId from "@/utils/generateUniqueId";
 import store from "@/utils/store";
 import { VALID_INPUT_MESSAGE } from "@/constants";
+import { mapMutations, mapState } from "vuex";
 
 export default {
   components: { InputBox, Button },
@@ -26,7 +27,15 @@ export default {
     this.todos = store.getData();
   },
 
+  computed: {
+    ...mapState({
+      showDate: "showDate",
+    }),
+  },
+
   methods: {
+    ...mapMutations(["SHOW_DATE"]),
+
     addTodo() {
       if (!this.inputValue.trim()) {
         alert(VALID_INPUT_MESSAGE);
@@ -42,6 +51,8 @@ export default {
       this.todos.push(todo);
       store.setData(this.todos);
       this.inputValue = "";
+      this.date = "";
+      this.SHOW_DATE(false);
     },
 
     getCurrentDate(curDate) {
