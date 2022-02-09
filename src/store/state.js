@@ -3,6 +3,7 @@ const state = {
   showDate: false,
   category: "",
   importance: "",
+  todos: [],
 };
 
 export default state;

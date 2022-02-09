@@ -11,6 +11,9 @@ const mutations = {
   IMPORTANCE(state, importance) {
     state.importance = importance;
   },
+  TODOS(state, todos) {
+    state.todos = todos;
+  },
 };
 
 export default mutations;

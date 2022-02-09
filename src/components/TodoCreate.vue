@@ -6,12 +6,12 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from "vuex";
 import InputBox from "./common/InputBox";
 import Button from "./common/Button";
 import generateUniqueId from "@/utils/generateUniqueId";
 import store from "@/utils/store";
 import { checkInputValidation } from "@/utils/checkValidation";
-import { mapMutations, mapState } from "vuex";
 
 export default {
   components: { InputBox, Button },
@@ -23,16 +23,18 @@ export default {
     };
   },
 
-  created() {
-    if (store.getData()) this.todos = store.getData();
-  },
-
   computed: {
     ...mapState({
       showDate: "showDate",
       category: "category",
       importance: "importance",
     }),
+  },
+
+  created() {
+    if (store.getData()) {
+      this.todos = store.getData();
+    }
   },
 
   methods: {
@@ -45,7 +47,7 @@ export default {
       const todo = {
         id: generateUniqueId(),
         name: this.inputValue,
-        done: false,
+        progress: "Not Started",
         category: this.category,
         importance: this.importance,
         dueDate: this.date,
@@ -53,10 +55,12 @@ export default {
 
       this.todos.push(todo);
       store.setData(this.todos);
+
       this.inputValue = "";
       this.date = "";
       this.CATEGORY("");
       this.IMPORTANCE("");
+
       this.SHOW_DATE(false);
     },
 
@@ -70,6 +74,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   display: flex;
+  max-width: rem(800px);
 
   & > button {
     margin-left: 10px;
