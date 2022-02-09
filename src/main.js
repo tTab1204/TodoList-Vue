@@ -8,9 +8,7 @@ import VCalendar from "v-calendar";
 
 Vue.config.productionTip = false;
 
-Vue.use(VCalendar, {
-  componentPrefix: "vc",
-});
+Vue.use(VCalendar);
 
 new Vue({
   router,

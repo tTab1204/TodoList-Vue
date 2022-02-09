@@ -46,7 +46,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -77,7 +77,6 @@ export default {
 
 .modal-header h3 {
   margin-top: 0;
-  color: #42b983;
 }
 
 .modal-body {

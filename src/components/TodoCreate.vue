@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="addTodo" class="container">
     <InputBox v-model="inputValue" />
-    <Button />
+    <Button name="추가하기" :onClick="addTodo" />
   </form>
 </template>
 

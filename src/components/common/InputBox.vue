@@ -3,8 +3,8 @@
     <input
       type="text"
       placeholder="할 일을 작성하세요."
-      v-bind:value="value"
-      v-on:input="updateInput"
+      :value="value"
+      @input="updateInput"
     />
     <div class="input-option" @click.prevent="SHOW_MODAL(true)">
       <IconBase width="18" height="19" iconName="calendar" iconColor="#898989"
@@ -14,19 +14,27 @@
 
     <div class="input-option">카테고리</div>
     <div class="input-option">중요도</div>
-    <Modal v-if="showModal" />
+    <CalendarModal v-if="showModal" />
   </div>
 </template>
 
 <script>
+import { mapMutations, mapState } from "vuex";
 import IconBase from "@/components/icons/IconBase.vue";
 import CalendarIcon from "@/components/icons/CalendarIcon.vue";
 import DownIcon from "@/components/icons/DownIcon.vue";
 import Modal from "@/components/common/Modal.vue";
-import { mapMutations, mapState } from "vuex";
+import CalendarModal from "@/components/CalendarModal.vue";
 
 export default {
-  components: { IconBase, CalendarIcon, DownIcon, Modal },
+  components: {
+    IconBase,
+    CalendarIcon,
+    DownIcon,
+    Modal,
+    CalendarModal,
+  },
+
   props: ["value"],
 
   computed: {

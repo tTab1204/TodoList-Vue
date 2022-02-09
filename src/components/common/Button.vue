@@ -1,9 +1,34 @@
 <template>
-  <button>추가하기</button>
+  <button :type="type" @click.prevent="onClick">
+    {{ name }}
+  </button>
 </template>
 
 <script>
-export default {};
+// Button 공통 컴포넌트 만들기 Vue.js
+// https://codeburst.io/creating-reusable-components-with-vue-js-button-component-503167facfde
+export default {
+  props: {
+    type: {
+      type: String,
+      default: "submit",
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    width: {
+      type: String,
+    },
+    color: {
+      type: String,
+    },
+    onClick: {
+      type: Function,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -15,5 +40,6 @@ button {
   font-size: rem(16px);
   color: $white;
   padding: rem(12px);
+  cursor: pointer;
 }
 </style>
