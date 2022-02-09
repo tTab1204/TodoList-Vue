@@ -6,6 +6,8 @@
       :value="value"
       @input="updateInput"
     />
+    <div class="input-option date" v-show="showDate">마감일: {{ date }}</div>
+
     <div class="input-option" @click.prevent="SHOW_MODAL(true)">
       <IconBase width="18" height="19" iconName="calendar" iconColor="#898989"
         ><CalendarIcon
@@ -14,7 +16,7 @@
 
     <div class="input-option">카테고리</div>
     <div class="input-option">중요도</div>
-    <CalendarModal v-if="showModal" />
+    <CalendarModal @date="getCurrentDate" v-if="showModal" />
   </div>
 </template>
 
@@ -35,7 +37,18 @@ export default {
     CalendarModal,
   },
 
-  props: ["value"],
+  props: {
+    value: {
+      type: String,
+    },
+  },
+
+  data() {
+    return {
+      date: "",
+      showDate: false,
+    };
+  },
 
   computed: {
     ...mapState({
@@ -48,6 +61,13 @@ export default {
 
     updateInput(e) {
       this.$emit("input", e.target.value);
+    },
+
+    getCurrentDate(curDate) {
+      const formattedDate = new Intl.DateTimeFormat("ko-KR").format(curDate);
+      this.date = formattedDate;
+      this.$emit("date", this.date);
+      this.showDate = true;
     },
   },
 };
@@ -92,5 +112,10 @@ input {
   & > svg {
     background: #ffffff;
   }
+}
+
+.date {
+  background: transparent;
+  color: $danger;
 }
 </style>

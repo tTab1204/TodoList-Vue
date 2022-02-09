@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="addTodo" class="container">
-    <InputBox v-model="inputValue" />
+    <InputBox v-model="inputValue" @date="getCurrentDate" />
     <Button name="추가하기" :onClick="addTodo" />
   </form>
 </template>
@@ -18,7 +18,12 @@ export default {
     return {
       inputValue: "",
       todos: [],
+      date: "",
     };
+  },
+
+  created() {
+    this.todos = store.getData();
   },
 
   methods: {
@@ -31,11 +36,16 @@ export default {
         id: generateUniqueId(),
         name: this.inputValue,
         done: false,
+        dueDate: this.date,
       };
 
       this.todos.push(todo);
       store.setData(this.todos);
       this.inputValue = "";
+    },
+
+    getCurrentDate(curDate) {
+      this.date = curDate;
     },
   },
 };

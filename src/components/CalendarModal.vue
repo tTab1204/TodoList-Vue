@@ -48,6 +48,7 @@ export default {
     ...mapMutations(["SHOW_MODAL"]),
 
     addDueDate() {
+      this.$emit("date", this.date);
       this.SHOW_MODAL(false);
     },
   },
