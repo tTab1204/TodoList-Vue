@@ -108,9 +108,10 @@ input {
   font-size: rem(14px);
   padding: rem(7px) rem(9px);
   margin-right: rem(5px);
+  cursor: pointer;
 
-  & > svg {
-    background: #ffffff;
+  &:hover {
+    background: $gray-03;
   }
 }
 

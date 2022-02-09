@@ -1,49 +1,47 @@
 <template>
   <div class="container">
-    <div class="title">카테고리</div>
+    <div class="title">중요도</div>
     <Tag
-      v-for="category in categories"
-      :key="category"
-      :class="clickedStyle(category)"
+      v-for="importance in importances"
+      :key="importance"
+      :class="clickedStyle(importance)"
       :onClick="onHandleClicked"
-      :name="category"
+      :name="importance"
     />
   </div>
 </template>
 
 <script>
 import Tag from "@/components/common/Tag.vue";
-import { categories } from "@/constants";
+import { importances } from "@/constants";
 import { mapMutations, mapState } from "vuex";
 
 export default {
   components: {
     Tag,
   },
-
   data() {
     return {
-      categories: categories,
+      importances: importances,
     };
   },
 
   computed: {
     ...mapState({
-      category: "category",
+      importance: "importance",
     }),
   },
 
   methods: {
-    ...mapMutations(["CATEGORY"]),
+    ...mapMutations(["IMPORTANCE"]),
 
-    onHandleClicked(category) {
-      this.CATEGORY(category);
-      console.log(this.category);
+    onHandleClicked(importance) {
+      this.IMPORTANCE(importance);
     },
 
-    clickedStyle(category) {
+    clickedStyle(importance) {
       return {
-        clickedTag: this.category === category,
+        clickedTag: this.importance === importance,
       };
     },
   },
@@ -55,12 +53,11 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: rem(50px);
 }
 
 .title {
   font-size: rem(14px);
   color: $gray-05;
-  margin-right: rem(16px);
+  margin-right: 16px;
 }
 </style>

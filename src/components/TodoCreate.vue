@@ -24,17 +24,19 @@ export default {
   },
 
   created() {
-    this.todos = store.getData();
+    if (store.getData()) this.todos = store.getData();
   },
 
   computed: {
     ...mapState({
       showDate: "showDate",
+      category: "category",
+      importance: "importance",
     }),
   },
 
   methods: {
-    ...mapMutations(["SHOW_DATE"]),
+    ...mapMutations(["SHOW_DATE", "CATEGORY", "IMPORTANCE"]),
 
     addTodo() {
       if (!this.inputValue.trim()) {
@@ -45,6 +47,8 @@ export default {
         id: generateUniqueId(),
         name: this.inputValue,
         done: false,
+        category: this.category,
+        importance: this.importance,
         dueDate: this.date,
       };
 
@@ -52,6 +56,8 @@ export default {
       store.setData(this.todos);
       this.inputValue = "";
       this.date = "";
+      this.CATEGORY("");
+      this.IMPORTANCE("");
       this.SHOW_DATE(false);
     },
 

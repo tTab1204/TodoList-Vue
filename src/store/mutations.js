@@ -5,6 +5,12 @@ const mutations = {
   SHOW_DATE(state, toggle) {
     state.showDate = toggle;
   },
+  CATEGORY(state, category) {
+    state.category = category;
+  },
+  IMPORTANCE(state, importance) {
+    state.importance = importance;
+  },
 };
 
 export default mutations;

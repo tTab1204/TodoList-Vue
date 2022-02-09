@@ -1,17 +1,21 @@
 <template>
   <div class="body-container">
     <TodoCreate />
-    <Category />
+    <div class="wrapper">
+      <Category />
+      <Importances />
+    </div>
     <!-- <div v-for="todo in todos">:key "todo.id"</div> -->
   </div>
 </template>
 
 <script>
-import TodoCreate from "./TodoCreate";
-import Category from "./Category";
+import TodoCreate from "@/components/TodoCreate";
+import Category from "@/components/Category";
+import Importances from "@/components/Importances.vue";
 
 export default {
-  components: { TodoCreate, Category },
+  components: { TodoCreate, Category, Importances },
 };
 </script>
 
@@ -22,5 +26,11 @@ export default {
   @media screen and (max-width: 780px) {
     padding: rem(12px) rem(20px);
   }
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: rem(38px);
 }
 </style>
