@@ -10,7 +10,7 @@ import InputBox from "./common/InputBox";
 import Button from "./common/Button";
 import generateUniqueId from "@/utils/generateUniqueId";
 import store from "@/utils/store";
-import { VALID_INPUT_MESSAGE } from "@/constants";
+import { checkInputValidation } from "@/utils/checkValidation";
 import { mapMutations, mapState } from "vuex";
 
 export default {
@@ -39,10 +39,9 @@ export default {
     ...mapMutations(["SHOW_DATE", "CATEGORY", "IMPORTANCE"]),
 
     addTodo() {
-      if (!this.inputValue.trim()) {
-        alert(VALID_INPUT_MESSAGE);
-        return;
-      }
+      const checkValidation = checkInputValidation(this.inputValue);
+      if (!checkValidation) return;
+
       const todo = {
         id: generateUniqueId(),
         name: this.inputValue,

@@ -31,6 +31,7 @@
 import { mapMutations } from "vuex";
 import Modal from "@/components/common/Modal.vue";
 import Button from "@/components/common/Button.vue";
+import { checkDateValidation } from "@/utils/checkValidation";
 
 export default {
   components: {
@@ -40,7 +41,7 @@ export default {
 
   data() {
     return {
-      date: new Date(),
+      date: "",
     };
   },
 
@@ -48,6 +49,9 @@ export default {
     ...mapMutations(["SHOW_MODAL"]),
 
     addDueDate() {
+      const checkValidation = checkDateValidation(this.date);
+      if (!checkValidation) return;
+
       this.$emit("date", this.date);
       this.SHOW_MODAL(false);
     },

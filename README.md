@@ -9,6 +9,7 @@ vue, scss, vuex, router, eslint, babel, unit test
 #### FIX
 
 - [x] 할 일을 추가했을 때 마감일이 더 이상 보이지 않도록 만들기
+- [] 마감일을 오늘보다 이전으로 설정할 경우 클릭이 되지 않도록 만들기
 
 #### REFACTOR
 

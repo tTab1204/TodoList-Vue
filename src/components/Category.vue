@@ -38,7 +38,6 @@ export default {
 
     onHandleClicked(category) {
       this.CATEGORY(category);
-      console.log(this.category);
     },
 
     clickedStyle(category) {
