@@ -38,6 +38,7 @@ export default {};
       color: $white;
       border-radius: rem(5px);
       padding: rem(5px) rem(11px);
+      cursor: pointer;
     }
   }
 }

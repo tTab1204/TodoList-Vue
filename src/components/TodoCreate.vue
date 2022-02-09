@@ -28,17 +28,19 @@ export default {
       showDate: "showDate",
       category: "category",
       importance: "importance",
+      todos: "todos",
     }),
   },
 
   created() {
     if (store.getData()) {
       this.todos = store.getData();
+      this.TODOS(this.todos);
     }
   },
 
   methods: {
-    ...mapMutations(["SHOW_DATE", "CATEGORY", "IMPORTANCE"]),
+    ...mapMutations(["SHOW_DATE", "CATEGORY", "IMPORTANCE", "TODOS"]),
 
     addTodo() {
       const checkValidation = checkInputValidation(this.inputValue);
@@ -55,6 +57,7 @@ export default {
 
       this.todos.push(todo);
       store.setData(this.todos);
+      this.TODOS(this.todos);
 
       this.inputValue = "";
       this.date = "";
