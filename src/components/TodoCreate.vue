@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+import { mapGetters, mapMutations, mapState } from "vuex";
 import InputBox from "./common/InputBox";
 import Button from "./common/Button";
 import generateUniqueId from "@/utils/generateUniqueId";
@@ -18,7 +18,6 @@ export default {
   data() {
     return {
       inputValue: "",
-      todos: [],
       date: "",
     };
   },
@@ -34,13 +33,18 @@ export default {
 
   created() {
     if (store.getData()) {
-      this.todos = store.getData();
-      this.TODOS(this.todos);
+      this.TODOS(store.getData());
     }
   },
 
   methods: {
-    ...mapMutations(["SHOW_DATE", "CATEGORY", "IMPORTANCE", "TODOS"]),
+    ...mapMutations([
+      "SHOW_DATE",
+      "CATEGORY",
+      "IMPORTANCE",
+      "TODOS",
+      "ADD_TODO",
+    ]),
 
     addTodo() {
       const checkValidation = checkInputValidation(this.inputValue);
@@ -55,15 +59,11 @@ export default {
         dueDate: this.date,
       };
 
-      this.todos.push(todo);
-      store.setData(this.todos);
-      this.TODOS(this.todos);
-
+      this.ADD_TODO(todo);
       this.inputValue = "";
       this.date = "";
       this.CATEGORY("");
       this.IMPORTANCE("");
-
       this.SHOW_DATE(false);
     },
 

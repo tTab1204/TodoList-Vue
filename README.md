@@ -6,8 +6,8 @@ vue, scss, vuex, router, eslint, babel, unit test
 - [x] 중요도 추가하기
 - [x] Panel 컴포넌트 추가하기 (마크업만)
 - [x] Card 컴포넌트 추가하기 (마크업만)
-- [] todos 배열 전역 상태로 관리하기
-- [] todos 배열 진행 상태에 따라서 화면에 렌더링 되도록 만들기
+- [x] todos 배열 전역 상태로 관리하기
+- [x] todos 배열 진행 상태에 따라서 화면에 렌더링 되도록 만들기
 
 #### FIX
 

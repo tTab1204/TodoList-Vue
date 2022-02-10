@@ -1,31 +1,57 @@
 <template>
-  <div class="container">
+  <div class="panel-container">
     <div class="header">
       <div class="progress">
-        Not Started
+        {{ progress }}
         <div class="card-number">2</div>
       </div>
       <div class="dropdown-menu">생성순</div>
     </div>
-    <Card />
+    <Card v-for="todo in progressMatchedTodos" :key="todo.id" :todo="todo" />
   </div>
 </template>
 
 <script>
 import IconBase from "@/components/icons/IconBase.vue";
 import Card from "@/components/common/Card.vue";
+import { mapState } from "vuex";
 
 export default {
+  props: {
+    progress: {
+      type: String,
+      required: true,
+    },
+  },
+
+  data() {
+    return {
+      filteredTodos: [],
+    };
+  },
+
   components: {
     IconBase,
-
     Card,
+  },
+
+  computed: {
+    ...mapState({
+      todos: "todos",
+    }),
+
+    progressMatchedTodos() {
+      return this.todos.filter((todo) => todo.progress.includes(this.progress));
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.container {
+.panel-container {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
   width: rem(350px);
   height: rem(610px);
   border-radius: rem(10px);

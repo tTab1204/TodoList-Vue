@@ -6,11 +6,10 @@
       <Importances />
     </div>
     <div class="list-body">
-      <Panel />
-      <Panel />
-      <Panel />
+      <Panel progress="Not Started" />
+      <Panel progress="In Progress" />
+      <Panel progress="Done" />
     </div>
-    <!-- <div v-for="todo in todos">:key "todo.id"</div> -->
   </div>
 </template>
 
@@ -37,7 +36,6 @@ export default {
 .wrapper {
   display: flex;
   align-items: center;
-
   margin-top: rem(38px);
 }
 
