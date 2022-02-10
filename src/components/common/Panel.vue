@@ -24,12 +24,6 @@ export default {
     },
   },
 
-  data() {
-    return {
-      filteredTodos: [],
-    };
-  },
-
   components: {
     IconBase,
     Card,
@@ -57,13 +51,19 @@ export default {
   border-radius: rem(10px);
   background: $gray-02;
   padding: rem(22px) rem(26px);
+  padding-top: 0;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  background: $gray-02;
   margin-bottom: rem(19px);
+  padding-top: rem(22px);
+  padding-bottom: rem(10px);
 }
 
 .progress {

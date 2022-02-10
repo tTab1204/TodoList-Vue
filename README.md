@@ -17,3 +17,4 @@ vue, scss, vuex, router, eslint, babel, unit test
 #### REFACTOR
 
 - [x] 자주 중복되는 UI를 가진 input-option 클래스를 Tag 컴포넌트로 만들기
+- [x] Not Started, In Progress, Done 화면 상단에 고정시키기
