@@ -34,10 +34,14 @@ p {
   font-size: 2rem;
 }
 
-.control {
+button {
+  cursor: pointer;
+}
+
+.center-alignment {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
+  align-items: center;
 }
 
 // remConverter

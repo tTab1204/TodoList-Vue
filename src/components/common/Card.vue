@@ -3,11 +3,13 @@
     <div class="header">{{ todo.name }}</div>
     <div class="footer">
       <button
+        class="start-button"
         v-if="isNotStarted(todo.progress)"
         @click.prevent="changeProgress(todo.id)"
       >
         시작
       </button>
+      <button class="button-done" v-else />
     </div>
   </div>
 </template>
@@ -60,7 +62,7 @@ export default {
     display: flex;
     justify-content: flex-end;
 
-    & > button {
+    & > .start-button {
       background: $gray-05;
       color: $white;
       border-radius: rem(5px);
@@ -70,6 +72,15 @@ export default {
       &:hover {
         background: $gray-06;
       }
+    }
+
+    & > .button-done {
+      width: rem(25px);
+      height: rem(25px);
+      border: 1px solid $gray-04;
+      border-radius: 50%;
+      background: $white;
+      cursor: pointer;
     }
   }
 }
