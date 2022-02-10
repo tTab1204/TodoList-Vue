@@ -9,6 +9,8 @@ vue, scss, vuex, router, eslint, babel, unit test
 - [x] todos 배열 전역 상태로 관리하기
 - [x] todos 배열 진행 상태에 따라서 화면에 렌더링 되도록 만들기
 - [x] todo 진행 상태가 In Progress면 완료/미완료 체크 버튼 만들기
+- [x] 체크 버튼 Checkbox 컴포넌트로 따로 빼기
+- [x] 체크 버튼 눌렀을 때 Done 패널로 todo 보내기
 
 #### FIX
 

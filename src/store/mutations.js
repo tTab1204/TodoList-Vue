@@ -1,5 +1,5 @@
 import store from "@/utils/store";
-import { IN_PROGRESS } from "@/constants";
+import { IN_PROGRESS, DONE } from "@/constants";
 
 const mutations = {
   SHOW_MODAL(state, toggle) {
@@ -24,6 +24,12 @@ const mutations = {
   CHANGE_PROGRESS(state, id) {
     state.todos = state.todos.map((todo) =>
       todo.id === id ? { ...todo, progress: IN_PROGRESS } : todo
+    );
+    store.setData(state.todos);
+  },
+  CHECKED(state, id) {
+    state.todos = state.todos = state.todos.map((todo) =>
+      todo.id === id ? { ...todo, progress: DONE } : todo
     );
     store.setData(state.todos);
   },

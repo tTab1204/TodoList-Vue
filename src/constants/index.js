@@ -6,4 +6,4 @@ export const importances = ["상", "중", "하"];
 
 export const NOT_STARTED = "Not Started";
 export const IN_PROGRESS = "In Progress";
-export const DONE = "DONE";
+export const DONE = "Done";

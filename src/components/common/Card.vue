@@ -3,13 +3,19 @@
     <div class="header">{{ todo.name }}</div>
     <div class="footer">
       <button
-        class="start-button"
         v-if="isNotStarted(todo.progress)"
+        class="start-button"
         @click.prevent="changeProgress(todo.id)"
       >
         시작
       </button>
-      <button class="button-done" v-else />
+      <Checkbox
+        v-else
+        :checked="isChecked"
+        :onChange="onHandleCheck"
+        :class="onHandleCheckedStyle"
+        :todo="todo"
+      />
     </div>
   </div>
 </template>
@@ -17,8 +23,13 @@
 <script>
 import { NOT_STARTED } from "@/constants";
 import { mapMutations } from "vuex";
+import Checkbox from "@/components/common/Checkbox.vue";
 
 export default {
+  components: {
+    Checkbox,
+  },
+
   props: {
     todo: {
       type: Object,
@@ -26,8 +37,22 @@ export default {
     },
   },
 
+  data() {
+    return {
+      isChecked: false,
+    };
+  },
+
+  computed: {
+    onHandleCheckedStyle() {
+      return {
+        checked: this.isChecked,
+      };
+    },
+  },
+
   methods: {
-    ...mapMutations(["CHANGE_PROGRESS"]),
+    ...mapMutations(["CHANGE_PROGRESS", "CHECKED"]),
 
     changeProgress(id) {
       this.CHANGE_PROGRESS(id);
@@ -35,6 +60,11 @@ export default {
 
     isNotStarted(progress) {
       return progress === NOT_STARTED;
+    },
+
+    onHandleCheck(e, id) {
+      this.isChecked = e.target.checked;
+      this.CHECKED(id);
     },
   },
 };
