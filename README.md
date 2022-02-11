@@ -13,9 +13,9 @@ vue, scss, vuex, router, eslint, babel, unit test
 - [x] 체크 버튼 눌렀을 때 Done 패널로 todo 보내기
 - [x] Card 컴포넌트(todo) 각 패널로 Drag-And-Drop 시키기
 - [x] Done 패널에 있을 때는 완료 표시로 Todo Card 버튼 바꾸기
-- [] 수정, 삭제 아이콘 만들기 (Card 컴포넌트)
-- []
-
+- [x] 수정, 삭제 아이콘 만들기 (Card 컴포넌트)
+- [] todo 수정 기능 만들기 (일단 제목만 - 추후 모달 컴포넌트로 카테고리, 중요도, 날짜 모두 변경 가능하게 만들기)
+- [] todo 삭제 기능 만들기
 - [] skeleton 컴포넌트 만들어보기
 
 #### FIX

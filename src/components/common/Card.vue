@@ -6,7 +6,18 @@
     @dragstart="dragStart($event, todo)"
     @dragend="dragEnd"
   >
-    <div class="header">{{ todo.name }}</div>
+    <div class="header">
+      {{ todo.name }}
+
+      <div class="icons">
+        <IconBase width="18" height="18" iconName="edit" iconColor="#252529"
+          ><EditIcon
+        /></IconBase>
+        <IconBase width="18" height="18" iconName="delete" iconColor="#252529"
+          ><DeleteIcon
+        /></IconBase>
+      </div>
+    </div>
     <div class="footer">
       <button
         v-if="isNotStarted(todo.progress)"
@@ -29,12 +40,18 @@
 <script>
 import { NOT_STARTED } from "@/constants";
 import { mapMutations } from "vuex";
-import Checkbox from "@/components/common/Checkbox.vue";
 import { DONE } from "@/constants";
+import Checkbox from "@/components/common/Checkbox.vue";
+import IconBase from "@/components/icons/IconBase.vue";
+import EditIcon from "@/components/icons/EditIcon.vue";
+import DeleteIcon from "@/components/icons/DeleteIcon.vue";
 
 export default {
   components: {
     Checkbox,
+    IconBase,
+    EditIcon,
+    DeleteIcon,
   },
 
   props: {
@@ -114,6 +131,16 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    & > .icons {
+      display: flex;
+      // justify-content: space-between;
+      align-items: center;
+
+      & > svg:first-child {
+        margin-right: rem(6px);
+      }
+    }
   }
 
   & > .footer {
