@@ -15,7 +15,7 @@
             ><EditIcon
           /></IconBase>
         </div>
-        <div class="icon-wrapper" @click="REMOVE_TODO(todo.id)">
+        <div class="icon-wrapper" @click="removeTodo(todo.id)">
           <IconBase width="18" height="18" iconName="delete" iconColor="#252529"
             ><DeleteIcon
           /></IconBase>
@@ -23,6 +23,7 @@
       </div>
     </div>
     <div class="footer">
+      <div class="tag-icon" :class="setImportanceColor" />
       <button
         v-if="isNotStarted(todo.progress)"
         class="start-button"
@@ -50,6 +51,7 @@ import IconBase from "@/components/icons/IconBase.vue";
 import EditIcon from "@/components/icons/EditIcon.vue";
 import DeleteIcon from "@/components/icons/DeleteIcon.vue";
 import { checkInputValidation } from "@/utils/checkValidation";
+import { DELETE_CONFIRM_MESSAGE } from "@/constants";
 
 export default {
   components: {
@@ -88,6 +90,15 @@ export default {
         dragging: this.isDragStart,
       };
     },
+
+    setImportanceColor() {
+      if (!this.todo.importance) return;
+      return {
+        top: this.todo.importance === "상",
+        middle: this.todo.importance === "중",
+        low: this.todo.importance === "하",
+      };
+    },
   },
 
   methods: {
@@ -124,6 +135,12 @@ export default {
       };
 
       this.EDIT_TODO(payload);
+    },
+
+    removeTodo(id) {
+      if (confirm(DELETE_CONFIRM_MESSAGE)) {
+        this.REMOVE_TODO(id);
+      }
     },
 
     dragStart(e, todo) {
@@ -175,7 +192,7 @@ export default {
 
   & > .footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 
     & > .start-button {
       background: $gray-05;
@@ -202,5 +219,24 @@ export default {
 
 .dragging {
   opacity: 0.5;
+}
+
+.tag-icon {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: rem(6px);
+}
+
+.top {
+  background: $orange;
+}
+
+.middle {
+  background: $yellow;
+}
+
+.low {
+  background: $green;
 }
 </style>

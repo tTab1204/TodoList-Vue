@@ -8,6 +8,7 @@
       :onClick="onHandleClicked"
       :name="category"
     />
+    <slot name="category"></slot>
   </div>
 </template>
 

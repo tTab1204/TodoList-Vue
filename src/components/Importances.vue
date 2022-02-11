@@ -2,12 +2,15 @@
   <div class="container">
     <div class="title">중요도</div>
     <Tag
+      :icon="true"
       v-for="importance in importances"
       :key="importance"
       :class="clickedStyle(importance)"
       :onClick="onHandleClicked"
       :name="importance"
-    />
+    >
+      <slot name="icon"></slot>
+    </Tag>
   </div>
 </template>
 
@@ -42,6 +45,7 @@ export default {
     clickedStyle(importance) {
       return {
         clickedTag: this.importance === importance,
+        icon: true,
       };
     },
   },

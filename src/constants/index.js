@@ -1,5 +1,6 @@
 export const VALID_INPUT_MESSAGE = "할 일을 입력하세요!";
 export const VALID_DATE_MESSAGE = "오늘 또는 오늘 이후 날짜를 선택해주세요.";
+export const DELETE_CONFIRM_MESSAGE = "정말 삭제하시겠습니까?";
 
 export const categories = ["생활", "공부", "업무", "운동", "기타"];
 export const importances = ["상", "중", "하"];
