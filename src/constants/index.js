@@ -8,7 +8,6 @@ export const VALID_INPUT_MESSAGE = "할 일을 입력하세요!";
 export const VALID_DATE_MESSAGE = "오늘 또는 오늘 이후 날짜를 선택해주세요.";
 export const DELETE_CONFIRM_MESSAGE = "정말 삭제하시겠습니까?";
 
-// export const categories = ["생활", "공부", "업무", "운동", "기타"];
 export const categories = [
   { value: "생활", icon: life },
   { value: "공부", icon: books },
@@ -21,3 +20,10 @@ export const importances = ["상", "중", "하"];
 export const NOT_STARTED = "Not Started";
 export const IN_PROGRESS = "In Progress";
 export const DONE = "Done";
+
+// Dropdown Menu
+export const options = [
+  { value: "생성순" },
+  { value: "중요도순" },
+  { value: "날짜순" },
+];

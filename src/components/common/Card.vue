@@ -142,8 +142,7 @@ export default {
 
     editTodo(id) {
       const edittedName = prompt("제목을 수정해주세요.");
-      const validation = checkInputValidation(edittedName);
-      if (!validation) return;
+      if (edittedName === null || !edittedName.trim()) return;
 
       const payload = {
         id: id,

@@ -10,7 +10,12 @@
         {{ progress }}
         <div class="card-number">2</div>
       </div>
-      <div class="dropdown-menu">생성순</div>
+      <Dropdown
+        :progrss="progress"
+        :options="options"
+        :selected="selected"
+        :handleSelect="handleSelect"
+      />
     </div>
     <Card
       v-for="todo in progressMatchedTodos"
@@ -25,7 +30,8 @@
 import IconBase from "@/components/icons/IconBase.vue";
 import Card from "@/components/common/Card.vue";
 import { mapMutations, mapState } from "vuex";
-import { DONE, IN_PROGRESS, NOT_STARTED } from "@/constants";
+import { DONE, IN_PROGRESS, NOT_STARTED, options } from "@/constants";
+import Dropdown from "@/components/common/Dropdown.vue";
 
 export default {
   props: {
@@ -38,6 +44,20 @@ export default {
   components: {
     IconBase,
     Card,
+    Dropdown,
+  },
+
+  data() {
+    return {
+      options: [],
+      selected: "",
+    };
+  },
+
+  created() {
+    this.options = options;
+    this.selected = "생성순";
+    console.log(this.selected);
   },
 
   computed: {
@@ -53,6 +73,11 @@ export default {
 
   methods: {
     ...mapMutations(["CHANGE_PROGRESS_BY_DRAG"]),
+
+    handleSelect(option, close) {
+      this.selected = option;
+      close();
+    },
 
     dragOver() {},
 
@@ -111,6 +136,7 @@ export default {
   display: flex;
   align-items: center;
 
+  font-family: "Pretendard";
   font-weight: 500;
   font-size: rem(20px);
   line-height: 130%;

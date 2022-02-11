@@ -17,7 +17,7 @@ vue, scss, vuex, router, eslint, babel, unit test
 - [x] todo 수정 기능 만들기 (제목만)
 - [x] todo 삭제 기능 만들기
 - [] Checkbox 컴포넌트 체크 됐을 때 check icon 추가하기
-- [] Dropdown 컴포넌트 만들기
+- [x] Dropdown 컴포넌트 만들기
 - [x] 중요도별 아이콘 추가하기
 - [x] 카테고리별 아이콘 추가하기
 - [x] Todo Card에 날짜 표시하기
