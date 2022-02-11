@@ -12,6 +12,10 @@ vue, scss, vuex, router, eslint, babel, unit test
 - [x] 체크 버튼 Checkbox 컴포넌트로 따로 빼기
 - [x] 체크 버튼 눌렀을 때 Done 패널로 todo 보내기
 - [x] Card 컴포넌트(todo) 각 패널로 Drag-And-Drop 시키기
+- [x] Done 패널에 있을 때는 완료 표시로 Todo Card 버튼 바꾸기
+- [] 수정, 삭제 아이콘 만들기 (Card 컴포넌트)
+- []
+
 - [] skeleton 컴포넌트 만들어보기
 
 #### FIX

@@ -1,7 +1,7 @@
 <template>
   <div
     class="panel-container"
-    @dragover.prevent="dragOver(progress)"
+    @dragover.prevent="dragOver"
     @drop.prevent="drop($event, progress)"
     ref="panel"
   >
@@ -54,9 +54,7 @@ export default {
   methods: {
     ...mapMutations(["CHANGE_PROGRESS_BY_DRAG"]),
 
-    dragOver(progress) {
-      // console.log("dragOver!?");
-    },
+    dragOver() {},
 
     // drop.prevent를 해야하는 이유는?
     drop(e, panelProgress) {

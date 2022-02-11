@@ -30,6 +30,7 @@
 import { NOT_STARTED } from "@/constants";
 import { mapMutations } from "vuex";
 import Checkbox from "@/components/common/Checkbox.vue";
+import { DONE } from "@/constants";
 
 export default {
   components: {
@@ -48,6 +49,10 @@ export default {
       isChecked: false,
       isDragStart: false,
     };
+  },
+
+  created() {
+    this.isChecked = this.todo.progress === DONE ? true : false;
   },
 
   computed: {
@@ -76,6 +81,7 @@ export default {
 
     onHandleCheck(e, id) {
       this.isChecked = e.target.checked;
+      console.log(this.isChecked);
       this.CHECKED(id);
     },
 
