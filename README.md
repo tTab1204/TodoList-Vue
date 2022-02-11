@@ -20,7 +20,7 @@ vue, scss, vuex, router, eslint, babel, unit test
 - [] Dropdown 컴포넌트 만들기
 - [x] 중요도별 아이콘 추가하기
 - [x] 카테고리별 아이콘 추가하기
-- [] Todo Card에 날짜 표시하기
+- [x] Todo Card에 날짜 표시하기
 - [x] Todo Card에 카테고리 아이콘 표시하기
 - [] skeleton 컴포넌트 만들어보기
 

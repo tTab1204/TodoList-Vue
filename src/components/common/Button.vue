@@ -33,7 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 button {
-  background: $primary-100;
+  background: $primary-80;
   border-radius: rem(5px);
   font-weight: 500;
   font-family: "Pretendard";
@@ -41,5 +41,9 @@ button {
   color: $white;
   padding: rem(12px);
   cursor: pointer;
+
+  &:hover {
+    background: $primary-100;
+  }
 }
 </style>

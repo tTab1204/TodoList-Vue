@@ -22,6 +22,7 @@
         </div>
       </div>
     </div>
+    <div v-if="todo.dueDate" class="date">~ {{ todo.dueDate }}</div>
     <div class="footer">
       <div class="icon-wrapper">
         <img
@@ -228,14 +229,14 @@ export default {
     }
 
     & > .start-button {
-      background: $primary-100;
+      background: $primary-80;
       color: $white;
       border-radius: rem(5px);
       padding: rem(5px) rem(11px);
       cursor: pointer;
 
       &:hover {
-        background: $primary-120;
+        background: $primary-100;
       }
     }
   }
@@ -262,5 +263,11 @@ export default {
 
 .low {
   background: $green;
+}
+
+.date {
+  font-weight: 400;
+  font-size: rem(16px);
+  color: $gray-05;
 }
 </style>

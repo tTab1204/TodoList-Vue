@@ -42,7 +42,7 @@ export default {
 .checkbox {
   width: 25px;
   height: 25px;
-  border: 1px solid $gray-04;
+  border: 1px solid $primary-80;
   border-radius: 50%;
   background: $white;
   cursor: pointer;
@@ -52,7 +52,7 @@ export default {
   }
 
   &:hover {
-    background: $gray-03;
+    background: $primary-20;
   }
 }
 
@@ -69,10 +69,10 @@ export default {
 }
 
 .checked {
-  background: $primary-100;
+  background: $primary-80;
 
   &:hover {
-    background: $primary-100;
+    background: $primary-80;
   }
 }
 </style>
