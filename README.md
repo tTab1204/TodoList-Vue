@@ -19,7 +19,7 @@ vue, scss, vuex, router, eslint, babel, unit test
 - [] Checkbox 컴포넌트 체크 됐을 때 check icon 추가하기
 - [] Dropdown 컴포넌트 만들기
 - [x] 중요도별 아이콘 추가하기
-- [] 카테고리별 아이콘 추가하기
+- [x] 카테고리별 아이콘 추가하기
 - [] skeleton 컴포넌트 만들어보기
 
 #### FIX

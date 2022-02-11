@@ -1,25 +1,25 @@
 <template>
   <div class="container">
     <div class="title">카테고리</div>
-    <Tag
+    <CategoryTag
       v-for="category in categories"
-      :key="category"
+      :key="category.value"
       :class="clickedStyle(category)"
       :onClick="onHandleClicked"
-      :name="category"
-    />
-    <slot name="category"></slot>
+      :category="category"
+    >
+    </CategoryTag>
   </div>
 </template>
 
 <script>
-import Tag from "@/components/common/Tag.vue";
 import { categories } from "@/constants";
 import { mapMutations, mapState } from "vuex";
+import CategoryTag from "@/components/common/CategoryTag.vue";
 
 export default {
   components: {
-    Tag,
+    CategoryTag,
   },
 
   data() {

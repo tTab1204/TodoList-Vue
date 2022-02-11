@@ -1,6 +1,6 @@
 <template>
   <div class="tag" @click.prevent="onClick(name)">
-    <div slot="icon" class="tag-icon" :class="setImportanceColor"></div>
+    <div slot="circle" class="tag-circle" :class="setImportanceColor"></div>
     {{ name }}
   </div>
 </template>
@@ -54,11 +54,11 @@ export default {
   font-weight: 600;
 }
 
-.icon {
+.circle {
   justify-content: space-between;
 }
 
-.tag-icon {
+.tag-circle {
   width: 12px;
   height: 12px;
   border-radius: 50%;

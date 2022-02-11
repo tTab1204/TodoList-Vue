@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="title">중요도</div>
-    <Tag
+    <ImportanceTag
       :icon="true"
       v-for="importance in importances"
       :key="importance"
@@ -9,19 +9,19 @@
       :onClick="onHandleClicked"
       :name="importance"
     >
-      <slot name="icon"></slot>
-    </Tag>
+      <slot name="circle"></slot>
+    </ImportanceTag>
   </div>
 </template>
 
 <script>
-import Tag from "@/components/common/Tag.vue";
+import ImportanceTag from "@/components/ImportanceTag.vue";
 import { importances } from "@/constants";
 import { mapMutations, mapState } from "vuex";
 
 export default {
   components: {
-    Tag,
+    ImportanceTag,
   },
   data() {
     return {

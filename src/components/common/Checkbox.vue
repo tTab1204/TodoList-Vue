@@ -5,11 +5,13 @@
       class="hidden-checkbox"
       @change="onChange($event, todo.id)"
     />
-    <!-- checkIcon 넣기 -->
   </label>
 </template>
 
 <script>
+import IconBase from "@/components/icons/IconBase.vue";
+import CheckIcon from "@/components/icons/CheckIcon.vue";
+
 export default {
   props: {
     checked: {
@@ -24,6 +26,11 @@ export default {
       type: Object,
     },
   },
+
+  components: {
+    IconBase,
+    CheckIcon,
+  },
 };
 </script>
 
@@ -35,6 +42,11 @@ export default {
   border-radius: 50%;
   background: $white;
   cursor: pointer;
+  transition: ease 0.1s;
+
+  & > svg {
+    position: absolute;
+  }
 }
 
 .hidden-checkbox {
