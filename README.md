@@ -20,6 +20,8 @@ vue, scss, vuex, router, eslint, babel, unit test
 - [] Dropdown 컴포넌트 만들기
 - [x] 중요도별 아이콘 추가하기
 - [x] 카테고리별 아이콘 추가하기
+- [] Todo Card에 날짜 표시하기
+- [x] Todo Card에 카테고리 아이콘 표시하기
 - [] skeleton 컴포넌트 만들어보기
 
 #### FIX
@@ -33,3 +35,4 @@ vue, scss, vuex, router, eslint, babel, unit test
 - [x] Not Started, In Progress, Done 화면 상단에 고정시키기
 - [] 수정 버튼 클릭 시 Modal 창을 이용, 날짜, 카테고리, 중요도 모두 바꿀 수 있도록 개선하기
 - [] 삭제 시 confirm message 띄우기 (Confirm 컴포넌트 이용, alert 창이 아니라)
+- [x] primary colors 지정, Button hover 색상 변경

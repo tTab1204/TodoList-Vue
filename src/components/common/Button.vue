@@ -33,7 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 button {
-  background: $gray-06;
+  background: $primary-100;
   border-radius: rem(5px);
   font-weight: 500;
   font-family: "Pretendard";

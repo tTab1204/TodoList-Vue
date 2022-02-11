@@ -4,6 +4,7 @@
       type="checkbox"
       class="hidden-checkbox"
       @change="onChange($event, todo.id)"
+      :disabled="disabled"
     />
   </label>
 </template>
@@ -25,6 +26,9 @@ export default {
     todo: {
       type: Object,
     },
+    disabled: {
+      type: Boolean,
+    },
   },
 
   components: {
@@ -42,10 +46,13 @@ export default {
   border-radius: 50%;
   background: $white;
   cursor: pointer;
-  transition: ease 0.1s;
 
   & > svg {
     position: absolute;
+  }
+
+  &:hover {
+    background: $gray-03;
   }
 }
 
@@ -62,6 +69,10 @@ export default {
 }
 
 .checked {
-  background: $gray-06;
+  background: $primary-100;
+
+  &:hover {
+    background: $primary-100;
+  }
 }
 </style>

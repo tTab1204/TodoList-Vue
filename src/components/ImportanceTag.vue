@@ -50,8 +50,14 @@ export default {
 }
 
 .clickedTag {
-  background: $gray-03;
+  background: $primary-20;
   font-weight: 600;
+  color: $primary-100;
+
+  &:hover {
+    background: $primary-40;
+    opacity: 0.9;
+  }
 }
 
 .circle {

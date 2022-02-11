@@ -4,7 +4,7 @@
     <CategoryTag
       v-for="category in categories"
       :key="category.value"
-      :class="clickedStyle(category)"
+      :class="clickedStyle(category.value)"
       :onClick="onHandleClicked"
       :category="category"
     >

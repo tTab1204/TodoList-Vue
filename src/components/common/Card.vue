@@ -23,7 +23,15 @@
       </div>
     </div>
     <div class="footer">
-      <div class="tag-icon" :class="setImportanceColor" />
+      <div class="icon-wrapper">
+        <img
+          v-if="todo.category"
+          class="category-icon"
+          :src="onHandleCategory(todo.category)"
+          :alt="todo.category"
+        />
+        <div class="importance-icon" :class="setImportanceColor" />
+      </div>
       <button
         v-if="isNotStarted(todo.progress)"
         class="start-button"
@@ -37,6 +45,7 @@
         :onChange="onHandleCheck"
         :class="onHandleCheckedStyle"
         :todo="todo"
+        :disabled="disabled"
       />
     </div>
   </div>
@@ -44,7 +53,7 @@
 
 <script>
 import { NOT_STARTED } from "@/constants";
-import { mapMutations } from "vuex";
+import { mapMutations, mapState } from "vuex";
 import { DONE } from "@/constants";
 import Checkbox from "@/components/common/Checkbox.vue";
 import IconBase from "@/components/icons/IconBase.vue";
@@ -52,6 +61,7 @@ import EditIcon from "@/components/icons/EditIcon.vue";
 import DeleteIcon from "@/components/icons/DeleteIcon.vue";
 import { checkInputValidation } from "@/utils/checkValidation";
 import { DELETE_CONFIRM_MESSAGE } from "@/constants";
+import { categories } from "@/constants";
 
 export default {
   components: {
@@ -72,14 +82,20 @@ export default {
     return {
       isChecked: false,
       isDragStart: false,
+      disabled: false,
     };
   },
 
   created() {
     this.isChecked = this.todo.progress === DONE ? true : false;
+    this.disabled = this.isChecked;
   },
 
   computed: {
+    ...mapState({
+      category: "category",
+    }),
+
     onHandleCheckedStyle() {
       return {
         checked: this.isChecked,
@@ -120,7 +136,6 @@ export default {
 
     onHandleCheck(e, id) {
       this.isChecked = e.target.checked;
-      console.log(this.isChecked);
       this.CHECKED(id);
     },
 
@@ -141,6 +156,11 @@ export default {
       if (confirm(DELETE_CONFIRM_MESSAGE)) {
         this.REMOVE_TODO(id);
       }
+    },
+
+    onHandleCategory(category) {
+      const temp = categories.filter((item) => item.value === category);
+      return temp[0].icon;
     },
 
     dragStart(e, todo) {
@@ -195,25 +215,28 @@ export default {
     justify-content: space-between;
     align-items: center;
 
+    & > .icon-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    & > .icon-wrapper > .category-icon {
+      width: 18px;
+      height: 18px;
+      margin-right: rem(10px);
+    }
+
     & > .start-button {
-      background: $gray-05;
+      background: $primary-100;
       color: $white;
       border-radius: rem(5px);
       padding: rem(5px) rem(11px);
       cursor: pointer;
 
       &:hover {
-        background: $gray-06;
+        background: $primary-120;
       }
-    }
-
-    & > .button-done {
-      width: rem(25px);
-      height: rem(25px);
-      border: 1px solid $gray-04;
-      border-radius: 50%;
-      background: $white;
-      cursor: pointer;
     }
   }
 }
@@ -222,7 +245,7 @@ export default {
   opacity: 0.5;
 }
 
-.tag-icon {
+.importance-icon {
   width: 12px;
   height: 12px;
   border-radius: 50%;

@@ -1,5 +1,5 @@
 <template>
-  <div class="tag" @click.prevent="onClick(name)">
+  <div class="tag" @click.prevent="onClick(category.value)">
     <img :src="category.icon" :alt="category.value" />
     {{ category.value }}
   </div>
@@ -43,8 +43,14 @@ export default {
 }
 
 .clickedTag {
-  background: $gray-03;
+  background: $primary-20;
   font-weight: 600;
+  color: $primary-100;
+
+  &:hover {
+    background: $primary-40;
+    opacity: 0.9;
+  }
 }
 
 .icon {

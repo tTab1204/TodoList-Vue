@@ -116,7 +116,12 @@ input {
 }
 
 .date {
-  background: transparent;
-  color: $danger;
+  background: $primary-20;
+  color: $primary-100;
+  font-weight: 500;
+
+  &:hover {
+    background: $gray-02;
+  }
 }
 </style>
