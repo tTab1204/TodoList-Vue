@@ -33,7 +33,16 @@ const mutations = {
     );
     store.setData(state.todos);
   },
-  REMOVE_TODO(state) {
+  EDIT_TODO(state, payload) {
+    const { id, edittedName } = payload;
+
+    state.todos = state.todos.map((todo) =>
+      todo.id === id ? { ...todo, name: edittedName } : todo
+    );
+
+    store.setData(state.todos);
+  },
+  REMOVE_TODO(state, id) {
     state.todos = state.todos.filter((todo) => todo.id !== id);
     store.setData(state.todos);
   },
