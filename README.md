@@ -11,6 +11,8 @@ vue, scss, vuex, router, eslint, babel, unit test
 - [x] todo 진행 상태가 In Progress면 완료/미완료 체크 버튼 만들기
 - [x] 체크 버튼 Checkbox 컴포넌트로 따로 빼기
 - [x] 체크 버튼 눌렀을 때 Done 패널로 todo 보내기
+- [x] Card 컴포넌트(todo) 각 패널로 Drag-And-Drop 시키기
+- [] skeleton 컴포넌트 만들어보기
 
 #### FIX
 

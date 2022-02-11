@@ -1,5 +1,11 @@
 <template>
-  <div class="card-container">
+  <div
+    class="card-container"
+    :class="dragStartStyle"
+    draggable="true"
+    @dragstart="dragStart($event, todo)"
+    @dragend="dragEnd"
+  >
     <div class="header">{{ todo.name }}</div>
     <div class="footer">
       <button
@@ -40,6 +46,7 @@ export default {
   data() {
     return {
       isChecked: false,
+      isDragStart: false,
     };
   },
 
@@ -49,10 +56,15 @@ export default {
         checked: this.isChecked,
       };
     },
+    dragStartStyle() {
+      return {
+        dragging: this.isDragStart,
+      };
+    },
   },
 
   methods: {
-    ...mapMutations(["CHANGE_PROGRESS", "CHECKED"]),
+    ...mapMutations(["CHANGE_PROGRESS", "CHECKED", "GRABBED_TODO"]),
 
     changeProgress(id) {
       this.CHANGE_PROGRESS(id);
@@ -65,6 +77,15 @@ export default {
     onHandleCheck(e, id) {
       this.isChecked = e.target.checked;
       this.CHECKED(id);
+    },
+
+    dragStart(e, todo) {
+      this.isDragStart = true;
+      this.GRABBED_TODO(todo);
+    },
+
+    dragEnd(e) {
+      this.isDragStart = false;
     },
   },
 };
@@ -81,6 +102,7 @@ export default {
   background: $white;
   padding: rem(20px);
   margin-bottom: rem(18px);
+  cursor: grab;
 
   & > .header {
     display: flex;
@@ -113,5 +135,9 @@ export default {
       cursor: pointer;
     }
   }
+}
+
+.dragging {
+  opacity: 0.5;
 }
 </style>

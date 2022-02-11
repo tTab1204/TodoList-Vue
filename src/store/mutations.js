@@ -37,6 +37,17 @@ const mutations = {
     state.todos = state.todos.filter((todo) => todo.id !== id);
     store.setData(state.todos);
   },
+  GRABBED_TODO(state, todo) {
+    state.grabbedTodo = todo;
+  },
+  CHANGE_PROGRESS_BY_DRAG(state, payload) {
+    const { id, panelProgress } = payload;
+
+    state.todos = state.todos.map((todo) =>
+      todo.id === id ? { ...todo, progress: panelProgress } : todo
+    );
+    store.setData(state.todos);
+  },
 };
 
 export default mutations;

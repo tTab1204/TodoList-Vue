@@ -1,5 +1,10 @@
 <template>
-  <div class="panel-container">
+  <div
+    class="panel-container"
+    @dragover.prevent="dragOver(progress)"
+    @drop.prevent="drop($event, progress)"
+    ref="panel"
+  >
     <div class="header">
       <div class="progress">
         {{ progress }}
@@ -7,14 +12,20 @@
       </div>
       <div class="dropdown-menu">생성순</div>
     </div>
-    <Card v-for="todo in progressMatchedTodos" :key="todo.id" :todo="todo" />
+    <Card
+      v-for="todo in progressMatchedTodos"
+      :key="todo.id"
+      :todo="todo"
+      ref="card"
+    />
   </div>
 </template>
 
 <script>
 import IconBase from "@/components/icons/IconBase.vue";
 import Card from "@/components/common/Card.vue";
-import { mapState } from "vuex";
+import { mapMutations, mapState } from "vuex";
+import { DONE, IN_PROGRESS, NOT_STARTED } from "@/constants";
 
 export default {
   props: {
@@ -32,10 +43,42 @@ export default {
   computed: {
     ...mapState({
       todos: "todos",
+      grabbedTodo: "grabbedTodo",
     }),
 
     progressMatchedTodos() {
       return this.todos.filter((todo) => todo.progress.includes(this.progress));
+    },
+  },
+
+  methods: {
+    ...mapMutations(["CHANGE_PROGRESS_BY_DRAG"]),
+
+    dragOver(progress) {
+      // console.log("dragOver!?");
+    },
+
+    // drop.prevent를 해야하는 이유는?
+    drop(e, panelProgress) {
+      const payload = {
+        id: this.grabbedTodo.id,
+        panelProgress: panelProgress,
+      };
+
+      if (panelProgress === NOT_STARTED) {
+        this.CHANGE_PROGRESS_BY_DRAG(payload);
+        return;
+      }
+
+      if (panelProgress === IN_PROGRESS) {
+        this.CHANGE_PROGRESS_BY_DRAG(payload);
+        return;
+      }
+
+      if (panelProgress === DONE) {
+        this.CHANGE_PROGRESS_BY_DRAG(payload);
+        return;
+      }
     },
   },
 };
@@ -89,7 +132,6 @@ export default {
   border: 1px solid $gray-04;
   border-radius: rem(10px);
   font-size: rem(16px);
-
   padding: rem(7px) rem(14px);
 }
 </style>

@@ -4,6 +4,7 @@ const state = {
   category: "",
   importance: "",
   todos: [],
+  grabbedTodo: {},
 };
 
 export default state;
