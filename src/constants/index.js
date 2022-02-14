@@ -27,3 +27,6 @@ export const options = [
   { value: "중요도순" },
   { value: "날짜순" },
 ];
+
+// days
+export const days = ["일", "월", "화", "수", "목", "금", "토"];

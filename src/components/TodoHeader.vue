@@ -7,14 +7,33 @@
       </div>
     </div>
     <div class="nav-day">
-      <strong>오늘은 금요일!</strong>
+      <strong>오늘은 {{ day }}요일!</strong>
       하루만 버티면 주말입니다.
     </div>
   </nav>
 </template>
 
 <script>
-export default {};
+import { days } from "@/constants";
+export default {
+  data() {
+    return {
+      day: "",
+    };
+  },
+
+  created() {
+    this.getDay();
+  },
+
+  methods: {
+    getDay() {
+      const now = new Date();
+      const today = now.getDay();
+      this.day = days[today];
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
