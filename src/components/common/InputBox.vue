@@ -5,6 +5,7 @@
       placeholder="할 일을 작성하세요."
       :value="value"
       @input="updateInput"
+      ref="input"
     />
     <div class="input-option date" v-show="showDate">마감일: {{ date }}</div>
 
@@ -47,6 +48,10 @@ export default {
     return {
       date: "",
     };
+  },
+
+  mounted() {
+    this.$refs.input.focus();
   },
 
   computed: {

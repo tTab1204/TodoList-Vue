@@ -1,12 +1,12 @@
 <template>
   <form @submit.prevent="addTodo" class="container">
-    <InputBox v-model="inputValue" @date="getCurrentDate" />
+    <InputBox v-model="inputValue" @date="getCurrentDate" ref="parentInput" />
     <Button name="추가하기" :onClick="addTodo" />
   </form>
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapState } from "vuex";
+import { mapMutations, mapState } from "vuex";
 import InputBox from "./common/InputBox";
 import Button from "./common/Button";
 import generateUniqueId from "@/utils/generateUniqueId";
@@ -48,7 +48,11 @@ export default {
 
     addTodo() {
       const checkValidation = checkInputValidation(this.inputValue);
-      if (!checkValidation) return;
+      if (!checkValidation) {
+        // 뭔가 코드가 매우 지저분한데
+        this.$refs.parentInput.$refs.input.focus();
+        return;
+      }
 
       const todo = {
         id: generateUniqueId(),

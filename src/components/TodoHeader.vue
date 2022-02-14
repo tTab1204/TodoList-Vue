@@ -8,7 +8,6 @@
     </div>
     <div class="nav-day">
       <strong>오늘은 {{ day }}요일!</strong>
-      하루만 버티면 주말입니다.
     </div>
   </nav>
 </template>

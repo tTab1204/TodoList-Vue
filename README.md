@@ -22,6 +22,8 @@ vue, scss, vuex, router, eslint, babel, unit test
 - [x] 카테고리별 아이콘 추가하기
 - [x] Todo Card에 날짜 표시하기
 - [x] Todo Card에 카테고리 아이콘 표시하기
+- [x] 컴포넌트가 마운트 됐을 때 input 요소에 focus하기
+- [x] inputCheckValidation이 false라면 다시 input 요소에 focus하기
 - [] 생성 순 정렬 기능 추가하기
 - [] 중요도 순 정렬 기능 추가하기
 - [] 날짜 순 정렬 기능 추가하기

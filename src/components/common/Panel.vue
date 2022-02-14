@@ -57,7 +57,6 @@ export default {
   created() {
     this.options = options;
     this.selected = "생성순";
-    console.log(this.selected);
   },
 
   computed: {
