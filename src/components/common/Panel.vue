@@ -1,7 +1,7 @@
 <template>
   <div
     class="panel-container"
-    @dragover.prevent="dragOver"
+    @dragover.prevent="dragOver($event, progress)"
     @drop.prevent="drop($event, progress)"
     ref="panel"
   >
@@ -18,9 +18,10 @@
       />
     </div>
     <Card
-      v-for="todo in progressMatchedTodos"
+      v-for="(todo, i) in progressMatchedTodos"
       :key="todo.id"
       :todo="todo"
+      :index="i"
       ref="card"
     />
   </div>
@@ -32,6 +33,7 @@ import Card from "@/components/common/Card.vue";
 import { mapMutations, mapState } from "vuex";
 import { DONE, IN_PROGRESS, NOT_STARTED, options } from "@/constants";
 import Dropdown from "@/components/common/Dropdown.vue";
+import { throttle } from "lodash";
 
 export default {
   props: {
@@ -78,7 +80,10 @@ export default {
       close();
     },
 
-    dragOver() {},
+    dragOver(e) {
+      // console.log(e.target.dataset);
+      // this.$refs.panel.style.background = "#e9e9e9";
+    },
 
     // drop.prevent를 해야하는 이유는?
     drop(e, panelProgress) {

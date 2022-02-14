@@ -24,6 +24,7 @@ vue, scss, vuex, router, eslint, babel, unit test
 - [x] Todo Card에 카테고리 아이콘 표시하기
 - [x] 컴포넌트가 마운트 됐을 때 input 요소에 focus하기
 - [x] inputCheckValidation이 false라면 다시 input 요소에 focus하기
+- [x] 같은 패널 안에서 Drag and Drop 가능하도록 만들기 (배열의 인덱스를 변화시키기)
 - [] 생성 순 정렬 기능 추가하기
 - [] 중요도 순 정렬 기능 추가하기
 - [] 날짜 순 정렬 기능 추가하기

@@ -16,10 +16,10 @@ const mutations = {
   },
   TODOS(state, todos) {
     state.todos = todos;
+    //store.setData(state.todos);
   },
   ADD_TODO(state, todoItem) {
     state.todos.push(todoItem);
-    store.setData(state.todos);
   },
   CHANGE_PROGRESS(state, id) {
     state.todos = state.todos.map((todo) =>
@@ -46,8 +46,9 @@ const mutations = {
     state.todos = state.todos.filter((todo) => todo.id !== id);
     store.setData(state.todos);
   },
-  GRABBED_TODO(state, todo) {
-    state.grabbedTodo = todo;
+  GRABBED_TODO(state, payload) {
+    const { todo, index } = payload;
+    state.grabbedTodo = { ...todo, index: index };
   },
   CHANGE_PROGRESS_BY_DRAG(state, payload) {
     const { id, panelProgress } = payload;

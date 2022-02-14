@@ -15,8 +15,8 @@
       /></IconBase>
     </div>
 
-    <div class="input-option">카테고리</div>
-    <div class="input-option">중요도</div>
+    <!-- <div class="input-option">카테고리</div>
+    <div class="input-option">중요도</div> -->
     <CalendarModal @date="getCurrentDate" v-if="showModal" />
   </div>
 </template>

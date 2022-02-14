@@ -1,10 +1,15 @@
 <template>
   <div
+    :data-index="index"
     class="card-container"
     :class="dragStartStyle"
     draggable="true"
     @dragstart="dragStart($event, todo)"
-    @dragend="dragEnd"
+    @dragenter="dragEnter"
+    @dragleave="dragLeave"
+    @dragend.prevent="dragEnd"
+    @dragover.prevent="dragOver"
+    @drop.prevent="drop"
   >
     <div class="header">
       {{ todo.name }}
@@ -60,7 +65,6 @@ import Checkbox from "@/components/common/Checkbox.vue";
 import IconBase from "@/components/icons/IconBase.vue";
 import EditIcon from "@/components/icons/EditIcon.vue";
 import DeleteIcon from "@/components/icons/DeleteIcon.vue";
-import { checkInputValidation } from "@/utils/checkValidation";
 import { DELETE_CONFIRM_MESSAGE } from "@/constants";
 import { categories } from "@/constants";
 
@@ -77,6 +81,9 @@ export default {
       type: Object,
       required: true,
     },
+    index: {
+      type: Number,
+    },
   },
 
   data() {
@@ -84,6 +91,7 @@ export default {
       isChecked: false,
       isDragStart: false,
       disabled: false,
+      currentPanelTodo: [],
     };
   },
 
@@ -92,9 +100,17 @@ export default {
     this.disabled = this.isChecked;
   },
 
+  mounted() {
+    this.currentPanelTodo = this.todos.filter(
+      (item) => item.progress === this.todo.progress
+    );
+  },
+
   computed: {
     ...mapState({
       category: "category",
+      todos: "todos",
+      grabbedTodo: "grabbedTodo",
     }),
 
     onHandleCheckedStyle() {
@@ -120,6 +136,7 @@ export default {
 
   methods: {
     ...mapMutations([
+      "TODOS",
       "CHANGE_PROGRESS",
       "CHECKED",
       "GRABBED_TODO",
@@ -165,11 +182,57 @@ export default {
 
     dragStart(e, todo) {
       this.isDragStart = true;
-      this.GRABBED_TODO(todo);
+      const payload = {
+        todo: todo,
+        index: this.index,
+      };
+      this.GRABBED_TODO(payload);
+
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.dropEffect = "move";
+    },
+
+    dragEnter(e) {
+      if (e.target.className === "card-container") {
+        e.target.style.background = "#e9e9e9";
+      }
     },
 
     dragEnd(e) {
       this.isDragStart = false;
+    },
+
+    dragLeave(e) {
+      if (e.target.className === "card-container") {
+        e.target.style.background = "";
+      }
+    },
+    dragOver() {},
+
+    drop(e) {
+      if (e.target.className === "card-container") {
+        e.target.style.background = "";
+        const oldIndex = this.grabbedTodo.index;
+        const newIndex = e.target.dataset.index;
+
+        console.log("oldIndex: ", oldIndex);
+        console.log("newIndex: ", newIndex);
+
+        [this.currentPanelTodo[oldIndex], this.currentPanelTodo[newIndex]] = [
+          this.currentPanelTodo[newIndex],
+          this.currentPanelTodo[oldIndex],
+        ];
+        console.log("currentPanelTodo: ", this.currentPanelTodo);
+
+        const NotThisProgressTodos = this.todos.filter(
+          (todo) => todo.progress !== this.todo.progress
+        );
+        const updatedTodos = [
+          ...NotThisProgressTodos,
+          ...this.currentPanelTodo,
+        ];
+        this.TODOS(updatedTodos);
+      }
     },
   },
 };
