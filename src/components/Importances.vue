@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="title">중요도</div>
-    <ImportanceTag
+    <Tag
       :icon="true"
       v-for="importance in importances"
       :key="importance"
@@ -9,19 +9,22 @@
       :onClick="onHandleClicked"
       :name="importance"
     >
-      <slot name="circle"></slot>
-    </ImportanceTag>
+      <template v-slot:importance>
+        <div class="tag-circle" :class="setImportanceColor(importance)"></div>
+        {{ importance }}
+      </template>
+    </Tag>
   </div>
 </template>
 
 <script>
-import ImportanceTag from "@/components/ImportanceTag.vue";
+import Tag from "@/components/common/Tag.vue";
 import { importances } from "@/constants";
 import { mapMutations, mapState } from "vuex";
 
 export default {
   components: {
-    ImportanceTag,
+    Tag,
   },
   data() {
     return {
@@ -48,6 +51,13 @@ export default {
         icon: true,
       };
     },
+    setImportanceColor(importance) {
+      return {
+        top: importance === "상",
+        middle: importance === "중",
+        low: importance === "하",
+      };
+    },
   },
 };
 </script>
@@ -63,5 +73,28 @@ export default {
   font-size: rem(14px);
   color: $gray-05;
   margin-right: 16px;
+}
+
+.circle {
+  justify-content: space-between;
+}
+
+.tag-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: rem(6px);
+}
+
+.top {
+  background: $orange;
+}
+
+.middle {
+  background: $yellow;
+}
+
+.low {
+  background: $green;
 }
 </style>

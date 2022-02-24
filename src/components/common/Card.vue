@@ -5,11 +5,12 @@
     :class="dragStartStyle"
     draggable="true"
     @dragstart="dragStart($event, todo)"
-    @dragenter="dragEnter"
+    @dragenter.prevent="dragEnter"
     @dragleave="dragLeave"
     @dragend.prevent="dragEnd"
     @dragover.prevent="dragOver"
     @drop.prevent="drop"
+    ref="card"
   >
     <div class="header">
       {{ todo.name }}
@@ -193,8 +194,15 @@ export default {
     },
 
     dragEnter(e) {
-      if (e.target.className === "card-container") {
-        e.target.style.background = "#e9e9e9";
+      if (
+        e.target.className === "card-container" ||
+        e.target.parentNode.className === "card-container"
+      ) {
+        if (e.target.className === "card-container") {
+          e.target.style.background = "#e9e9e9";
+        } else {
+          e.target.parentNode.style.background = "#e9e9e9";
+        }
       }
     },
 
@@ -215,14 +223,10 @@ export default {
         const oldIndex = this.grabbedTodo.index;
         const newIndex = e.target.dataset.index;
 
-        console.log("oldIndex: ", oldIndex);
-        console.log("newIndex: ", newIndex);
-
         [this.currentPanelTodo[oldIndex], this.currentPanelTodo[newIndex]] = [
           this.currentPanelTodo[newIndex],
           this.currentPanelTodo[oldIndex],
         ];
-        console.log("currentPanelTodo: ", this.currentPanelTodo);
 
         const NotThisProgressTodos = this.todos.filter(
           (todo) => todo.progress !== this.todo.progress

@@ -30,3 +30,10 @@ export const options = [
 
 // days
 export const days = ["일", "월", "화", "수", "목", "금", "토"];
+
+// Dropdown options
+export const dropdownOptions = {
+  PRODUCE_ORDER: "생성순",
+  IMPORTANCE_ORDER: "중요도순",
+  DATE_ORDER: "날짜순",
+};

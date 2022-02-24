@@ -20,6 +20,7 @@ const mutations = {
   },
   ADD_TODO(state, todoItem) {
     state.todos.push(todoItem);
+    store.setData(state.todos);
   },
   CHANGE_PROGRESS(state, id) {
     state.todos = state.todos.map((todo) =>

@@ -43,3 +43,5 @@ vue, scss, vuex, router, eslint, babel, unit test
 - [] 수정 버튼 클릭 시 Modal 창을 이용, 날짜, 카테고리, 중요도 모두 바꿀 수 있도록 개선하기
 - [] 삭제 시 confirm message 띄우기 (Confirm 컴포넌트 이용, alert 창이 아니라)
 - [x] primary colors 지정, Button hover 색상 변경
+- [] drag and drop 시 아래로 밀려나는 효과 주기 (스타일 개선)
+- [x] ImportanceTag, CategoryTag 컴포넌트를 공통 컴포넌트인 Tag로 합치기

@@ -33,7 +33,8 @@ import Card from "@/components/common/Card.vue";
 import { mapMutations, mapState } from "vuex";
 import { DONE, IN_PROGRESS, NOT_STARTED, options } from "@/constants";
 import Dropdown from "@/components/common/Dropdown.vue";
-import { throttle } from "lodash";
+import { dropdownOptions } from "@/constants";
+import sortTodos from "@/utils/sortTodos";
 
 export default {
   props: {
@@ -51,14 +52,20 @@ export default {
 
   data() {
     return {
+      currentProgressTodo: [],
       options: [],
       selected: "",
+      sortedArr: [],
     };
   },
 
   created() {
     this.options = options;
-    this.selected = "생성순";
+    this.selected = dropdownOptions.PRODUCE_ORDER;
+  },
+
+  mounted() {
+    this.sortedArr = this.sortedTodos;
   },
 
   computed: {
@@ -68,7 +75,9 @@ export default {
     }),
 
     progressMatchedTodos() {
-      return this.todos.filter((todo) => todo.progress.includes(this.progress));
+      return (this.currentProgressTodo = this.todos.filter(
+        (todo) => todo.progress === this.progress
+      ));
     },
   },
 
@@ -80,10 +89,7 @@ export default {
       close();
     },
 
-    dragOver(e) {
-      // console.log(e.target.dataset);
-      // this.$refs.panel.style.background = "#e9e9e9";
-    },
+    dragOver(e) {},
 
     // drop.prevent를 해야하는 이유는?
     drop(e, panelProgress) {
@@ -107,6 +113,11 @@ export default {
         return;
       }
     },
+  },
+
+  sortedTodos() {
+    const sorted = sortTodos(this.currentProgressTodo, this.selected);
+    return sorted;
   },
 };
 </script>

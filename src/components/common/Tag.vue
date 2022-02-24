@@ -1,7 +1,7 @@
 <template>
   <div class="tag" @click.prevent="onClick(category.value)">
-    <img :src="category.icon" :alt="category.value" />
-    {{ category.value }}
+    <slot name="category"></slot>
+    <slot name="importance"></slot>
   </div>
 </template>
 
