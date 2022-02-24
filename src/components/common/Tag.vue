@@ -1,15 +1,16 @@
 <template>
-  <div class="tag" @click.prevent="onClick(category.value)">
+  <div class="tag" @click.prevent="onClick(name)">
     <slot name="category"></slot>
     <slot name="importance"></slot>
+    {{ name }}
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    category: {
-      type: Object,
+    name: {
+      type: String,
       required: true,
     },
     onClick: {

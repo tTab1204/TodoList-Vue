@@ -6,11 +6,10 @@
       :key="category.value"
       :class="clickedStyle(category.value)"
       :onClick="onHandleClicked"
-      :category="category"
+      :name="category.value"
     >
       <template v-slot:category>
         <img :src="category.icon" :alt="category.value" />
-        {{ category.value }}
       </template>
     </Tag>
   </div>

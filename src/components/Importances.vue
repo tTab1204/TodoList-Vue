@@ -2,7 +2,6 @@
   <div class="container">
     <div class="title">중요도</div>
     <Tag
-      :icon="true"
       v-for="importance in importances"
       :key="importance"
       :class="clickedStyle(importance)"
@@ -11,7 +10,6 @@
     >
       <template v-slot:importance>
         <div class="tag-circle" :class="setImportanceColor(importance)"></div>
-        {{ importance }}
       </template>
     </Tag>
   </div>
