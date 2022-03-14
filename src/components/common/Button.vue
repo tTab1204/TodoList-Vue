@@ -1,5 +1,8 @@
 <template>
-  <button :type="type" @click.prevent="onClick">
+  <button v-if="eventControl" :type="type" @click.prevent="onClick">
+    {{ name }}
+  </button>
+  <button v-else :type="type" @click="onClick">
     {{ name }}
   </button>
 </template>
@@ -26,6 +29,10 @@ export default {
     onClick: {
       type: Function,
       required: true,
+    },
+    eventControl: {
+      type: Boolean,
+      default: false,
     },
   },
 };

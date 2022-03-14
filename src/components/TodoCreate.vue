@@ -49,7 +49,6 @@ export default {
     addTodo() {
       const checkValidation = checkInputValidation(this.inputValue);
       if (!checkValidation) {
-        // 뭔가 코드가 매우 지저분한데
         this.$refs.parentInput.$refs.input.focus();
         return;
       }
